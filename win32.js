@@ -33,6 +33,8 @@ function parseGwTable(gwTable, family) {
       const metric = parseInt(gatewayCosts[index]) + parseInt(ipMetric);
       if (!bestGw || metric < bestMetric) {
         [bestGw, bestMetric, bestId] = [gateway, metric, id];
+      } else if (bestGw && metric === bestMetric) {
+        bestGw = [].concat(bestGw, gateway);
       }
     }
   }
